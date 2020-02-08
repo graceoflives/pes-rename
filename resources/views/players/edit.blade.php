@@ -20,7 +20,7 @@
             {{ Session::get('message') }}
         </div>
     @endif
-    <form method="POST" class="form-horizontal" action="{{ route('players.update', ['id' => $player->id]) }}">
+    <form method="POST" class="form-horizontal" action="{{ route('players.update', ['player' => $player->id]) }}">
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
         <div class="form-group">
@@ -33,7 +33,7 @@
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <a class="btn btn-success"
-                   href="https://www.pesmaster.com/g-cristaldo/pes-2017/player/{!! $player->game_id !!}"
+                   href="https://www.pesmaster.com/{!! Str::slug($player->full_name_default) !!}/pes-2017/player/{!! $player->game_id !!}"
                    target="_blank">View Web Info</a>
             </div>
         </div>
@@ -77,6 +77,13 @@
             <div class="col-sm-10">
                 <input id="full_name_local" name="full_name_local" class="form-control"
                        value="{!! $player->full_name_local !!}">
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="full_name_local">Local Shirtname</label>
+            <div class="col-sm-10">
+                <input id="full_name_local" name="shirt_name_local" class="form-control"
+                       value="{!! $player->shirt_name_local !!}" maxlength="15">
             </div>
         </div>
         <div class="form-group">

@@ -23,4 +23,6 @@ Route::prefix('players')->group(function() {
     Route::post('restore/{id}', 'PlayerController@restore')->name('players.restore');
 });
 
-Route::resource('players', 'PlayerController');
+Route::resource('players', 'PlayerController')->only('index', 'edit', 'destroy', 'restore');
+
+Route::get('dataProcesses', 'DataProcessingController@index');

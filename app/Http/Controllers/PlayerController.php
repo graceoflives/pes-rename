@@ -112,7 +112,10 @@ class PlayerController extends Controller
             $hexFull = unpack('H*', $player->getOriginal('game_binary_default'))[1];
             $hexName = unpack('H*', (strlen($player->full_name_local) === 0) ? $player->full_name_default : $player->full_name_local);
             $hexName = str_pad($hexName[1], 94, '0');
+            $hexShirtName = unpack('H*', (strlen($player->shirt_name_local) === 0) ? $player->shirt_name_default : $player->shirt_name_local);
+            $hexShirtName = str_pad($hexShirtName[1], 90, '0');
             $updatedHexFull = substr_replace($hexFull, $hexName, 288, strlen($hexName));
+            $updatedHexFull = substr_replace($updatedHexFull, $hexShirtName, 196, strlen($hexShirtName));
             return $updatedHexFull;
         });
         $fullHex = $updatedHexes->implode('');
@@ -153,12 +156,13 @@ class PlayerController extends Controller
 
         if ($player) {
             $player->full_name_local = $request->input('full_name_local');
+            $player->shirt_name_local = strtoupper($request->input('shirt_name_local'));
             $player->save();
             Session::flash('message', 'Player updated successfully');
         } else {
             Session::flash('message', 'Player not found');
         }
-        return redirect()->route('players.edit', ['id' => $id + 1]);
+        return redirect()->route('players.edit', ['player' => $id + 1]);
     }
 
     public function destroy($id)

@@ -16,10 +16,10 @@ mix.scripts([
 ], 'public/js/vendor.js');
 
 mix.scripts([
-    'resources/assets/js/converter.js',
+    'resources/js/converter.js',
 ], 'public/js/app.js');
 
-mix.sass('resources/assets/sass/player.scss', 'public/css');
-mix.sass('resources/assets/sass/app.scss', 'public/css');
+mix.sass('resources/sass/player.scss', 'public/css');
+mix.sass('resources/sass/app.scss', 'public/css');
 
 mix.version();

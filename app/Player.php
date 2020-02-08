@@ -17,7 +17,8 @@ class Player extends Model
         'full_name_default',
         'shirt_name_default',
         'full_name_web',
-        'full_name_local'
+        'full_name_local',
+        'shirt_name_local'
     ];
 
     /**
