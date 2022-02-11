@@ -19,7 +19,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
-        "froala-editor": "^2.9.3",
+        "froala-editor": "^4.0.7",
         "gulp": "^4.0.1"
     }
 }
